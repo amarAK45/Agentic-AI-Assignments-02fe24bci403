@@ -1,0 +1,84 @@
+PS C:\Users\Lenovo\Downloads\Actual_Python_Assignment_Codes> python Lab6_Assignment1.py
+
+========== ORIGINAL PRACTICAL ==========
+
+=== Successful run: summarize_notes ===
+Summary stub: note has 8 words.
+
+=== Successful run: draft_email ===
+Draft email to meena@example.edu: 'Lab guide review'
+
+=== Failing run: draft_email to unknown contact ===
+Run failed as expected: no contact found for Unknown Person
+
+=== Register a THIRD skill ===
+[translated to Kannada] Hello, team
+
+========== ASSIGNMENT 1 ==========
+
+=== Maximum 3 tasks per user per session ===
+
+Task 1:
+Summary stub: note has 8 words.
+
+Task 2:
+Summary stub: note has 8 words.
+
+Task 3:
+Summary stub: note has 8 words.
+
+Task 4:
+REJECTED: User 'student1' has reached the maximum of 3 tasks in session 'rate_session_1'.
+
+Total accepted tasks: 3
+
+Assignment 1 validation:
+PASS: Fourth task was rejected.
+
+========== ASSIGNMENT 2 ==========
+
+=== Two failures followed by human escalation ===
+
+Attempt 1:
+Run failed as expected: no contact found for Unknown Person
+
+Attempt 2:
+Run failed as expected: no contact found for Unknown Person
+
+Attempt 3:
+HUMAN ESCALATION: Skill 'draft_email' failed twice for user 'student2'. Third attempt will not be executed.
+
+Assignment 2 validation:
+Actual skill failures: 2
+Human escalations: 1
+PASS: Two failures detected. Third attempt escalated to human.
+
+========== FULL AUDIT LOG ==========
+{'timestamp': '2026-11-21T09:58:52', 'user': 'uday', 'session_id': 'original_session_1', 'task': {'skill': 'summarize_notes', 'text': 'Agentic AI systems combine goals tools skills memory', 'session_id': 'original_session_1'}, 'skill': 'summarize_notes', 'tool_calls': [{'tool': 'word_count', 'output': {'count': 8}}], 'result': 'Summary stub: note has 8 words.', 'error': None, 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'uday', 'session_id': 'original_session_1', 'task': {'skill': 'draft_email', 'to': 'Dr. Meena', 'subject': 'Lab guide review', 'session_id': 'original_session_1'}, 'skill': 'draft_email', 'tool_calls': [{'tool': 'lookup_contact', 'output': {'email': 'meena@example.edu'}}], 'result': "Draft email to meena@example.edu: 'Lab guide review'", 'error': None, 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'uday', 'session_id': 'original_session_1', 'task': {'skill': 'draft_email', 'to': 'Unknown Person', 'subject': 'Hello', 'session_id': 'original_session_1'}, 'skill': 'draft_email', 'tool_calls': [{'tool': 'lookup_contact', 'output': {'error': 'no contact found for Unknown Person'}}], 'result': None, 'error': 'no contact found for Unknown Person', 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'uday', 'session_id': 'original_session_2', 'task': {'skill': 'translate_text', 'text': 'Hello, team', 'target_lang': 'Kannada', 'session_id': 'original_session_2'}, 'skill': 'translate_text', 'tool_calls': [], 'result': '[translated to Kannada] Hello, team', 'error': None, 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'student1', 'session_id': 'rate_session_1', 'task': {'skill': 'summarize_notes', 'text': 'This is rate limit test task number 1', 'session_id': 'rate_session_1'}, 'skill': 'summarize_notes', 'tool_calls': [{'tool': 'word_count', 'output': {'count': 8}}], 'result': 'Summary stub: note has 8 words.', 'error': None, 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'student1', 'session_id': 'rate_session_1', 'task': {'skill': 'summarize_notes', 'text': 'This is rate limit test task number 2', 'session_id': 'rate_session_1'}, 'skill': 'summarize_notes', 'tool_calls': [{'tool': 'word_count', 'output': {'count': 8}}], 'result': 'Summary stub: note has 8 words.', 'error': None, 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'student1', 'session_id': 'rate_session_1', 'task': {'skill': 'summarize_notes', 'text': 'This is rate limit test task number 3', 'session_id': 'rate_session_1'}, 'skill': 'summarize_notes', 'tool_calls': [{'tool': 'word_count', 'output': {'count': 8}}], 'result': 'Summary stub: note has 8 words.', 'error': None, 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'student2', 'session_id': 'escalation_session_1', 'task': {'skill': 'draft_email', 'to': 'Unknown Person', 'subject': 'Test attempt 1', 'session_id': 'escalation_session_1'}, 'skill': 'draft_email', 'tool_calls': [{'tool': 'lookup_contact', 'output': {'error': 'no contact found for Unknown Person'}}], 'result': None, 'error': 'no contact found for Unknown Person', 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'student2', 'session_id': 'escalation_session_1', 'task': {'skill': 'draft_email', 'to': 'Unknown Person', 'subject': 'Test attempt 2', 'session_id': 'escalation_session_1'}, 'skill': 'draft_email', 'tool_calls': [{'tool': 'lookup_contact', 'output': {'error': 'no contact found for Unknown Person'}}], 'result': None, 'error': 'no contact found for Unknown Person', 'escalated': False}
+{'timestamp': '2026-11-21T09:58:52', 'user': 'student2', 'session_id': 'escalation_session_1', 'task': {'skill': 'draft_email', 'to': 'Unknown Person', 'subject': 'Test attempt 3', 'session_id': 'escalation_session_1'}, 'skill': 'draft_email', 'tool_calls': [], 'result': None, 'error': "HUMAN ESCALATION: Skill 'draft_email' failed twice for user 'student2'. Third attempt will not be executed.", 'escalated': True}
+
+========== SCOPED MEMORY ==========
+
+Memory for uday:
+{'last_note_length': 8}
+
+Memory for student1:
+{'last_note_length': 8}
+
+Memory for student2:
+{}
+
+========== FINAL LAB 6 STATUS ==========
+Original Practical: Completed
+Assignment 1: PASSED
+Assignment 2: PASSED
+
+LAB 6 EXECUTION COMPLETED

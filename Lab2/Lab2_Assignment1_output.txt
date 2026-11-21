@@ -1,0 +1,387 @@
+PS C:\Users\Lenovo\Downloads\Actual_Python_Assignment_Codes> python Lab2_Assignment1.py
+=================================================================
+LAB 2: TOOL-USING AGENT - CAMPUS DATA ASSISTANT
+=================================================================
+
+Available tools:
+- calculator
+- read_csv
+- events_api
+- send_notification
+- filter_by_category
+
+=================================================================
+ORIGINAL QUESTION 1
+=================================================================
+
+Q: How many students signed up for events this month, and what's the average per event?
+
+[TOOL CALL] read_csv
+[REASON] Sign-up counts are stored in the CSV file.
+[INPUT] {}
+[OUTPUT] {'rows': [{'event': 'AI Club Talk', 'signups': '12', 'category': 'technical'}, {'event': 'Hackathon Kickoff', 'signups': '9', 'category': 'technical'}, {'event': 'Robotics Demo', 'signups': '15', 'category': 'technical'}, {'event': 'GenAI Workshop', 'signups': '7', 'category': 'technical'}, {'event': 'Capstone Expo', 'signups': '20', 'category': 'technical'}, {'event': 'Career Panel', 'signups': '11', 'category': 'social'}], 'row_count': 6}
+
+[TOOL CALL] calculator
+[REASON] Calculate the total number of sign-ups.
+[INPUT] {'operation': 'sum', 'values': [12, 9, 15, 7, 20, 11]}
+[OUTPUT] {'result': 74}
+
+[TOOL CALL] calculator
+[REASON] Calculate average sign-ups across all events.
+[INPUT] {'operation': 'average', 'values': [12, 9, 15, 7, 20, 11]}
+[OUTPUT] {'result': 12.333333333333334}
+
+[TOOL CALL] send_notification
+[REASON] The computed average is below the low-turnout threshold, so a notification draft is required.
+[INPUT] {'message': 'LOW EVENT TURNOUT NOTICE: The average event sign-up is 12.33, which is below the threshold of 13. Consider promoting upcoming campus events.'}
+[OUTPUT] {'draft_message': 'LOW EVENT TURNOUT NOTICE: The average event sign-up is 12.33, which is below the threshold of 13. Consider promoting upcoming campus events.', 'status': 'DRAFTED', 'sent': False}
+
+A: Total sign-ups: 74. Average per event: 12.33 (across 6 events).
+Low-turnout notification has been drafted (not sent).
+
+=================================================================
+ORIGINAL QUESTION 2
+=================================================================
+
+Q: Where and when is the Hackathon Kickoff?
+
+[TOOL CALL] events_api
+[REASON] Location and date information is available in the events API.
+[INPUT] {'event_name': 'Hackathon Kickoff'}
+[OUTPUT] {'date': '2026-07-05', 'location': 'Innovation Lab'}
+
+A: Hackathon Kickoff is at Innovation Lab on 2026-07-05.
+
+=================================================================
+ORIGINAL QUESTION 3
+=================================================================
+
+Q: Where and when is the Capstone Expo?
+
+[TOOL CALL] events_api
+[REASON] Checking the events API for Capstone Expo metadata.
+[INPUT] {'event_name': 'Capstone Expo'}
+[OUTPUT] {'error': "no event metadata found for 'Capstone Expo'"}
+
+A: I don't have location/date metadata for Capstone Expo in the events API.
+
+=================================================================
+ASSIGNMENT 2: TECHNICAL EVENTS AVERAGE
+=================================================================
+
+Q: What's the average sign-up for technical events only?
+
+--- TECHNICAL EVENT ANALYSIS ---
+
+[TOOL CALL] read_csv
+[REASON] Read the CSV because event sign-up counts and categories are stored in the file.
+[INPUT] {}
+[OUTPUT] {'rows': [{'event': 'AI Club Talk', 'signups': '12', 'category': 'technical'}, {'event': 'Hackathon Kickoff', 'signups': '9', 'category': 'technical'}, {'event': 'Robotics Demo', 'signups': '15', 'category': 'technical'}, {'event': 'GenAI Workshop', 'signups': '7', 'category': 'technical'}, {'event': 'Capstone Expo', 'signups': '20', 'category': 'technical'}, {'event': 'Career Panel', 'signups': '11', 'category': 'social'}], 'row_count': 6}
+
+[TOOL CALL] filter_by_category
+[REASON] Filter the CSV rows to include only technical events.
+[INPUT] {'rows': [{'event': 'AI Club Talk', 'signups': '12', 'category': 'technical'}, {'event': 'Hackathon Kickoff', 'signups': '9', 'category': 'technical'}, {'event': 'Robotics Demo', 'signups': '15', 'category': 'technical'}, {'event': 'GenAI Workshop', 'signups': '7', 'category': 'technical'}, {'event': 'Capstone Expo', 'signups': '20', 'category': 'technical'}, {'event': 'Career Panel', 'signups': '11', 'category': 'social'}], 'category': 'technical'}
+[OUTPUT] {'filtered_rows': [{'event': 'AI Club Talk', 'signups': '12', 'category': 'technical'}, {'event': 'Hackathon Kickoff', 'signups': '9', 'category': 'technical'}, {'event': 'Robotics Demo', 'signups': '15', 'category': 'technical'}, {'event': 'GenAI Workshop', 'signups': '7', 'category': 'technical'}, {'event': 'Capstone Expo', 'signups': '20', 'category': 'technical'}], 'row_count': 5, 'category': 'technical'}
+
+Filtered technical events:
+[
+  {
+    "event": "AI Club Talk",
+    "signups": "12",
+    "category": "technical"
+  },
+  {
+    "event": "Hackathon Kickoff",
+    "signups": "9",
+    "category": "technical"
+  },
+  {
+    "event": "Robotics Demo",
+    "signups": "15",
+    "category": "technical"
+  },
+  {
+    "event": "GenAI Workshop",
+    "signups": "7",
+    "category": "technical"
+  },
+  {
+    "event": "Capstone Expo",
+    "signups": "20",
+    "category": "technical"
+  }
+]
+
+VALIDATION PASSED: Filtered result is not empty.
+
+[TOOL CALL] calculator
+[REASON] Calculate the average sign-ups using only the validated technical event records.
+[INPUT] {'operation': 'average', 'values': [12, 9, 15, 7, 20]}
+[OUTPUT] {'result': 12.6}
+
+A: Average sign-ups for technical events: 12.60 (across 5 technical events).
+
+=================================================================
+COMPLETE TOOL EXECUTION TRACE
+=================================================================
+
+--- TOOL TRACE 1 ---
+Tool: read_csv
+Reason: Sign-up counts are stored in the CSV file.
+Input: {}
+Output: {
+  "rows": [
+    {
+      "event": "AI Club Talk",
+      "signups": "12",
+      "category": "technical"
+    },
+    {
+      "event": "Hackathon Kickoff",
+      "signups": "9",
+      "category": "technical"
+    },
+    {
+      "event": "Robotics Demo",
+      "signups": "15",
+      "category": "technical"
+    },
+    {
+      "event": "GenAI Workshop",
+      "signups": "7",
+      "category": "technical"
+    },
+    {
+      "event": "Capstone Expo",
+      "signups": "20",
+      "category": "technical"
+    },
+    {
+      "event": "Career Panel",
+      "signups": "11",
+      "category": "social"
+    }
+  ],
+  "row_count": 6
+}
+
+--- TOOL TRACE 2 ---
+Tool: calculator
+Reason: Calculate the total number of sign-ups.
+Input: {
+  "operation": "sum",
+  "values": [
+    12,
+    9,
+    15,
+    7,
+    20,
+    11
+  ]
+}
+Output: {
+  "result": 74
+}
+
+--- TOOL TRACE 3 ---
+Tool: calculator
+Reason: Calculate average sign-ups across all events.
+Input: {
+  "operation": "average",
+  "values": [
+    12,
+    9,
+    15,
+    7,
+    20,
+    11
+  ]
+}
+Output: {
+  "result": 12.333333333333334
+}
+
+--- TOOL TRACE 4 ---
+Tool: send_notification
+Reason: The computed average is below the low-turnout threshold, so a notification draft is required.
+Input: {
+  "message": "LOW EVENT TURNOUT NOTICE: The average event sign-up is 12.33, which is below the threshold of 13. Consider promoting upcoming campus events."
+}
+Output: {
+  "draft_message": "LOW EVENT TURNOUT NOTICE: The average event sign-up is 12.33, which is below the threshold of 13. Consider promoting upcoming campus events.",
+  "status": "DRAFTED",
+  "sent": false
+}
+
+--- TOOL TRACE 5 ---
+Tool: events_api
+Reason: Location and date information is available in the events API.
+Input: {
+  "event_name": "Hackathon Kickoff"
+}
+Output: {
+  "date": "2026-07-05",
+  "location": "Innovation Lab"
+}
+
+--- TOOL TRACE 6 ---
+Tool: events_api
+Reason: Checking the events API for Capstone Expo metadata.
+Input: {
+  "event_name": "Capstone Expo"
+}
+Output: {
+  "error": "no event metadata found for 'Capstone Expo'"
+}
+
+--- TOOL TRACE 7 ---
+Tool: read_csv
+Reason: Read the CSV because event sign-up counts and categories are stored in the file.
+Input: {}
+Output: {
+  "rows": [
+    {
+      "event": "AI Club Talk",
+      "signups": "12",
+      "category": "technical"
+    },
+    {
+      "event": "Hackathon Kickoff",
+      "signups": "9",
+      "category": "technical"
+    },
+    {
+      "event": "Robotics Demo",
+      "signups": "15",
+      "category": "technical"
+    },
+    {
+      "event": "GenAI Workshop",
+      "signups": "7",
+      "category": "technical"
+    },
+    {
+      "event": "Capstone Expo",
+      "signups": "20",
+      "category": "technical"
+    },
+    {
+      "event": "Career Panel",
+      "signups": "11",
+      "category": "social"
+    }
+  ],
+  "row_count": 6
+}
+
+--- TOOL TRACE 8 ---
+Tool: filter_by_category
+Reason: Filter the CSV rows to include only technical events.
+Input: {
+  "rows": [
+    {
+      "event": "AI Club Talk",
+      "signups": "12",
+      "category": "technical"
+    },
+    {
+      "event": "Hackathon Kickoff",
+      "signups": "9",
+      "category": "technical"
+    },
+    {
+      "event": "Robotics Demo",
+      "signups": "15",
+      "category": "technical"
+    },
+    {
+      "event": "GenAI Workshop",
+      "signups": "7",
+      "category": "technical"
+    },
+    {
+      "event": "Capstone Expo",
+      "signups": "20",
+      "category": "technical"
+    },
+    {
+      "event": "Career Panel",
+      "signups": "11",
+      "category": "social"
+    }
+  ],
+  "category": "technical"
+}
+Output: {
+  "filtered_rows": [
+    {
+      "event": "AI Club Talk",
+      "signups": "12",
+      "category": "technical"
+    },
+    {
+      "event": "Hackathon Kickoff",
+      "signups": "9",
+      "category": "technical"
+    },
+    {
+      "event": "Robotics Demo",
+      "signups": "15",
+      "category": "technical"
+    },
+    {
+      "event": "GenAI Workshop",
+      "signups": "7",
+      "category": "technical"
+    },
+    {
+      "event": "Capstone Expo",
+      "signups": "20",
+      "category": "technical"
+    }
+  ],
+  "row_count": 5,
+  "category": "technical"
+}
+
+--- TOOL TRACE 9 ---
+Tool: filter_validation
+Reason: Verify that the filtered technical event list is non-empty before calculating average.
+Input: {
+  "category": "technical",
+  "filtered_count": 5
+}
+Output: {
+  "valid": true,
+  "filtered_count": 5
+}
+
+--- TOOL TRACE 10 ---
+Tool: calculator
+Reason: Calculate the average sign-ups using only the validated technical event records.
+Input: {
+  "operation": "average",
+  "values": [
+    12,
+    9,
+    15,
+    7,
+    20
+  ]
+}
+Output: {
+  "result": 12.6
+}
+
+=================================================================
+LAB 2 EXECUTION SUMMARY
+=================================================================
+Original calculator tool: COMPLETED
+Original CSV reader tool: COMPLETED
+Original Mock Events API: COMPLETED
+Assignment 1 notification drafting: COMPLETED
+Assignment 2 category filtering: COMPLETED
+Filtered data validation: COMPLETED
+Tool execution trace: COMPLETED
+
+LAB 2 COMPLETED SUCCESSFULLY!

@@ -1,0 +1,54 @@
+C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab10_Assignment2.py
+
+=================================================================
+ORIGINAL INCIDENT: PAYMENTS SERVICE
+=================================================================
+severity: degraded
+incident_start: 14:03:40
+diagnosis: Incident started at 14:03:40, shortly after the 14:00:00 deployment of payments-service v2.4.1. Issues are concentrated in the refund code path, consistent with a possible regression introduced in that release.
+proposed_action: rollback
+risk_if_wrong: The service may experience interruption if the proposed remediation is incorrect.
+rollback_plan: Revert to v2.4.0; if that also errors, re-deploy v2.4.1.
+status: AWAITING HUMAN APPROVAL -- NOT EXECUTED
+note: Urgency noted, but high-risk action still requires human approval -- not bypassing the gate.
+
+=================================================================
+ASSIGNMENT 1: DATABASE CONNECTION-POOL INCIDENT
+=================================================================
+severity: early_warning
+incident_start: 15:04:00
+diagnosis: Incident started at 15:04:00, shortly after the 15:00:00 deployment of orders-service v1.8.0. Issues are concentrated in the database connection pool code path, consistent with a possible regression introduced in that release.
+proposed_action: rollback
+risk_if_wrong: The service may experience interruption if the proposed remediation is incorrect.
+rollback_plan: Revert to v1.7.9; if that also errors, re-deploy v1.8.0.
+status: AWAITING HUMAN APPROVAL -- NOT EXECUTED
+
+=================================================================
+ASSIGNMENT 2: WARNING-LEVEL AUTO-REMEDIATION
+=================================================================
+severity: early_warning
+incident_start: 16:02:00
+diagnosis: Incident started at 16:02:00, shortly after the 16:00:00 deployment of worker-service v3.1.0. Issues are concentrated in the worker pod code path, consistent with a possible regression introduced in that release.
+proposed_action: restart_single_pod
+risk_level: low
+action_executed: restart_single_pod
+status: AUTO-EXECUTED -- LOW-RISK WARNING ACTION
+
+=================================================================
+SAFETY CHECK: ROLLBACK ON WARNING-LEVEL INCIDENT
+=================================================================
+severity: early_warning
+incident_start: 16:02:00
+diagnosis: Incident started at 16:02:00, shortly after the 16:00:00 deployment of worker-service v3.1.0. Issues are concentrated in the worker pod code path, consistent with a possible regression introduced in that release.
+proposed_action: rollback
+risk_if_wrong: The service may experience interruption if the proposed remediation is incorrect.
+rollback_plan: Revert to v3.0.9; if that also errors, re-deploy v3.1.0.
+status: AWAITING HUMAN APPROVAL -- NOT EXECUTED
+
+=================================================================
+FINAL VALIDATION RESULTS
+=================================================================
+Original Practical: PASS
+Assignment 1 - Database Incident: PASS
+Assignment 2 - Safe Auto-Remediation: PASS
+Rollback Approval Safety: PASS

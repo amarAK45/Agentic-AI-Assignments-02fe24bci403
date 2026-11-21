@@ -1,0 +1,143 @@
+PS C:\Users\Lenovo\Downloads\Actual_Python_Assignment_Codes> python Lab3_Assignment1.py
+
+
+***************************************************************************
+LAB 3: SKILL CREATION — RESEARCH SUMMARY SKILL
+***************************************************************************
+
+Skill Name: research_summary
+
+
+********** ORIGINAL PRACTICAL **********
+
+===========================================================================
+ARTICLE: Retrieval-Augmented Generation Reduces Hallucination in Domain QA
+===========================================================================
+
+Claim:
+A recent benchmark study found that retrieval-augmented generation (RAG) reduced factual hallucination rates by 41% compared to a non-retrieval baseline on a domain-specific question-answering task.
+
+Supporting Evidence:
+The evaluation used 200 held-out questions from a medical knowledge base.
+
+Limitation:
+The authors note the evaluation set was small and drawn from a single domain, so results may not generalize to other domains without further testing.
+
+Undergraduate Takeaway:
+Undergraduate takeaway: A recent benchmark study found that retrieval-augmented generation (RAG) reduced factual hallucination rates by 41% compared to a non-retrieval baseline on a domain-specific question-answering task — interpret the result within the stated limitations.
+
+Claim Selection:
+One main claim detected. No competing claim selection required.
+
+Evidence Score:
+6
+Evidence indicators: contains numerical data, mentions evaluation, contains sample or dataset information, mentions held-out
+
+===========================================================================
+ARTICLE: Campus Wi-Fi Upgrade Improves Peak-Hour Throughput
+===========================================================================
+
+Claim:
+Following a campus-wide Wi-Fi access point upgrade, average peak-hour throughput in the library increased by 60%.
+
+Supporting Evidence:
+The measurement was taken over two weeks post-upgrade using the network monitoring dashboard.
+
+Limitation:
+The report does not include measurements from other buildings on campus, so it is unclear whether the improvement is uniform across campus.
+
+Undergraduate Takeaway:
+Undergraduate takeaway: Following a campus-wide Wi-Fi access point upgrade, average peak-hour throughput in the library increased by 60% — interpret the result within the stated limitations.
+
+Claim Selection:
+One main claim detected. No competing claim selection required.
+
+Evidence Score:
+2
+Evidence indicators: mentions measurement, contains a time period
+
+
+********** ASSIGNMENT 1 **********
+
+===========================================================================
+ARTICLE: Software Upgrade Improves Cost and Accuracy
+===========================================================================
+
+Claim:
+The new software reduced annual operating costs by 18%.
+
+Supporting Evidence:
+An audit of 120 purchase invoices over six months confirmed the cost reduction compared with the previous system.
+
+Limitation:
+The evaluation was limited to two datasets and may not represent all real-world applications.
+
+Undergraduate Takeaway:
+Undergraduate takeaway: The new software reduced annual operating costs by 18% — interpret the result within the stated limitations.
+
+Claim Selection:
+Multiple claims detected (2). Selected the claim with the highest evidence score (7).
+
+Evidence Score:
+7
+Evidence indicators: contains numerical data, mentions audit, contains sample or dataset information, mentions compared, contains a time period
+
+===========================================================================
+ASSIGNMENT 1: MULTI-CLAIM VALIDATION
+===========================================================================
+Multiple claims detected: True
+Selection explicitly disclosed: True
+Selected claim has supporting evidence: True
+
+ASSIGNMENT 1: PASSED
+
+
+********** ASSIGNMENT 2 **********
+Article Text:
+The new learning application improves student performance.
+
+===========================================================================
+ARTICLE: New Learning Application
+===========================================================================
+
+Claim:
+The new learning application improves student performance.
+
+Supporting Evidence:
+not stated in source
+
+Limitation:
+not stated in source
+
+Undergraduate Takeaway:
+Undergraduate takeaway: The new learning application improves student performance — interpret the result within the stated limitations.
+
+Claim Selection:
+One main claim detected. No competing claim selection required.
+
+Evidence Score:
+0
+
+===========================================================================
+ASSIGNMENT 2: LOW-EVIDENCE VALIDATION
+===========================================================================
+Evidence correctly marked as not stated: True
+Limitation correctly marked as not stated: True
+
+ASSIGNMENT 2: PASSED
+No fabrication occurred.
+
+
+********** FINAL REUSABILITY TEST **********
+
+===========================================================================
+REUSABILITY CHECK
+===========================================================================
+Same output structure: True
+Limitation field populated in every output: True
+
+RESULT: SKILL IS REUSABLE
+
+***************************************************************************
+LAB 3 EXECUTION COMPLETED
+***************************************************************************

@@ -1,0 +1,854 @@
+C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab7_Assignment1.py
+
+
+########## ORIGINAL PRACTICAL ##########
+
+===========================================================================
+ORIGINAL SUCCESS PATH - CAMPUS EVENT APP
+===========================================================================
+
+STEP 1
+---------------------------------------------------------------------------
+{
+    "node": "requirement",
+    "owner": "requirement_agent",
+    "status": "SUCCESS",
+    "input": "Campus event app goal",
+    "output": [
+        "user login",
+        "event listing",
+        "RSVP button"
+    ],
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ]
+    }
+}
+
+STEP 2
+---------------------------------------------------------------------------
+{
+    "node": "planner",
+    "owner": "planner_agent",
+    "status": "SUCCESS",
+    "input": "Application requirements",
+    "output": {
+        "user login": "task_for(user login)",
+        "event listing": "task_for(event listing)",
+        "RSVP button": "task_for(RSVP button)"
+    },
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        }
+    }
+}
+
+STEP 3
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 1,
+    "status": "SUCCESS",
+    "input": "Planned development tasks",
+    "output": "app.py generated",
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated"
+    }
+}
+
+STEP 4
+---------------------------------------------------------------------------
+{
+    "node": "security_scan",
+    "owner": "security_agent",
+    "status": "SUCCESS",
+    "input": "Generated application code",
+    "output": {
+        "security_scan_ok": true,
+        "security_report": "No security issues detected"
+    },
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected"
+    }
+}
+
+STEP 5
+---------------------------------------------------------------------------
+{
+    "node": "tester",
+    "owner": "tester_agent",
+    "status": "SUCCESS",
+    "input": "Built and security-scanned application",
+    "output": {
+        "tests_passed": true
+    },
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected",
+        "tests_passed": true
+    }
+}
+
+STEP 6
+---------------------------------------------------------------------------
+{
+    "node": "reviewer",
+    "owner": "reviewer_agent",
+    "status": "SUCCESS",
+    "input": "Tested application",
+    "output": {
+        "review_clean": true
+    },
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected",
+        "tests_passed": true,
+        "review_clean": true
+    }
+}
+
+STEP 7
+---------------------------------------------------------------------------
+{
+    "node": "human_gate",
+    "owner": "human",
+    "status": "SUCCESS",
+    "input": "Reviewed application",
+    "output": {
+        "human_signoff": true
+    },
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected",
+        "tests_passed": true,
+        "review_clean": true,
+        "human_signoff": true
+    }
+}
+
+---------------------------------------------------------------------------
+GRAPH RESULT: SUCCESS
+---------------------------------------------------------------------------
+
+===========================================================================
+ORIGINAL FAILURE PATH - BUILDER FAILURE
+===========================================================================
+
+STEP 1
+---------------------------------------------------------------------------
+{
+    "node": "requirement",
+    "owner": "requirement_agent",
+    "status": "SUCCESS",
+    "input": "Campus event app goal",
+    "output": [
+        "user login",
+        "event listing",
+        "RSVP button"
+    ],
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ]
+    }
+}
+
+STEP 2
+---------------------------------------------------------------------------
+{
+    "node": "planner",
+    "owner": "planner_agent",
+    "status": "SUCCESS",
+    "input": "Application requirements",
+    "output": {
+        "user login": "task_for(user login)",
+        "event listing": "task_for(event listing)",
+        "RSVP button": "task_for(RSVP button)"
+    },
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        }
+    }
+}
+
+STEP 3
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 1,
+    "status": "FAILED",
+    "input": "Planned development tasks",
+    "output": "Build failed",
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": false
+    }
+}
+
+STEP 4
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "event": "RETRY",
+    "retry_number": 1,
+    "message": "Builder failed. Retrying once."
+}
+
+STEP 5
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 2,
+    "status": "FAILED",
+    "input": "Planned development tasks",
+    "output": "Build failed",
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": false
+    }
+}
+
+STEP 6
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "event": "HUMAN_ESCALATION",
+    "status": "ESCALATED",
+    "message": "Builder failed twice. Human intervention required. No third attempt allowed."
+}
+
+---------------------------------------------------------------------------
+GRAPH RESULT: FAILURE / ESCALATION
+---------------------------------------------------------------------------
+
+
+########## ASSIGNMENT 1 ##########
+
+===========================================================================
+ASSIGNMENT 1 - SECURITY SCAN FAILURE
+===========================================================================
+
+STEP 1
+---------------------------------------------------------------------------
+{
+    "node": "requirement",
+    "owner": "requirement_agent",
+    "status": "SUCCESS",
+    "input": "Campus event app goal",
+    "output": [
+        "user login",
+        "event listing",
+        "RSVP button"
+    ],
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ]
+    }
+}
+
+STEP 2
+---------------------------------------------------------------------------
+{
+    "node": "planner",
+    "owner": "planner_agent",
+    "status": "SUCCESS",
+    "input": "Application requirements",
+    "output": {
+        "user login": "task_for(user login)",
+        "event listing": "task_for(event listing)",
+        "RSVP button": "task_for(RSVP button)"
+    },
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        }
+    }
+}
+
+STEP 3
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 1,
+    "status": "SUCCESS",
+    "input": "Planned development tasks",
+    "output": "app.py generated",
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated"
+    }
+}
+
+STEP 4
+---------------------------------------------------------------------------
+{
+    "node": "security_scan",
+    "owner": "security_agent",
+    "status": "FAILED",
+    "input": "Generated application code",
+    "output": {
+        "security_scan_ok": false,
+        "security_report": "Security vulnerabilities detected"
+    },
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": false,
+        "security_report": "Security vulnerabilities detected"
+    }
+}
+
+STEP 5
+---------------------------------------------------------------------------
+{
+    "node": "security_scan",
+    "event": "FAILURE_BEHAVIOR",
+    "message": "block_release_and_escalate_to_security_team"
+}
+
+---------------------------------------------------------------------------
+GRAPH RESULT: FAILURE / ESCALATION
+---------------------------------------------------------------------------
+
+ASSIGNMENT 1 VALIDATION:
+PASS: Security scan failure detected.
+PASS: Failure behavior triggered.
+PASS: Tester did not execute after security failure.
+
+
+########## ASSIGNMENT 2 - SCENARIO A ##########
+
+===========================================================================
+SCENARIO A - BUILDER FAILS ONCE AND SUCCEEDS
+===========================================================================
+
+STEP 1
+---------------------------------------------------------------------------
+{
+    "node": "requirement",
+    "owner": "requirement_agent",
+    "status": "SUCCESS",
+    "input": "Campus event app goal",
+    "output": [
+        "user login",
+        "event listing",
+        "RSVP button"
+    ],
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ]
+    }
+}
+
+STEP 2
+---------------------------------------------------------------------------
+{
+    "node": "planner",
+    "owner": "planner_agent",
+    "status": "SUCCESS",
+    "input": "Application requirements",
+    "output": {
+        "user login": "task_for(user login)",
+        "event listing": "task_for(event listing)",
+        "RSVP button": "task_for(RSVP button)"
+    },
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        }
+    }
+}
+
+STEP 3
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 1,
+    "status": "FAILED",
+    "input": "Planned development tasks",
+    "output": "Build failed",
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": false
+    }
+}
+
+STEP 4
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "event": "RETRY",
+    "retry_number": 1,
+    "message": "Builder failed. Retrying once."
+}
+
+STEP 5
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 2,
+    "status": "SUCCESS",
+    "input": "Planned development tasks",
+    "output": "app.py generated",
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated"
+    }
+}
+
+STEP 6
+---------------------------------------------------------------------------
+{
+    "node": "security_scan",
+    "owner": "security_agent",
+    "status": "SUCCESS",
+    "input": "Generated application code",
+    "output": {
+        "security_scan_ok": true,
+        "security_report": "No security issues detected"
+    },
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected"
+    }
+}
+
+STEP 7
+---------------------------------------------------------------------------
+{
+    "node": "tester",
+    "owner": "tester_agent",
+    "status": "SUCCESS",
+    "input": "Built and security-scanned application",
+    "output": {
+        "tests_passed": true
+    },
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected",
+        "tests_passed": true
+    }
+}
+
+STEP 8
+---------------------------------------------------------------------------
+{
+    "node": "reviewer",
+    "owner": "reviewer_agent",
+    "status": "SUCCESS",
+    "input": "Tested application",
+    "output": {
+        "review_clean": true
+    },
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected",
+        "tests_passed": true,
+        "review_clean": true
+    }
+}
+
+STEP 9
+---------------------------------------------------------------------------
+{
+    "node": "human_gate",
+    "owner": "human",
+    "status": "SUCCESS",
+    "input": "Reviewed application",
+    "output": {
+        "human_signoff": true
+    },
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": true,
+        "code": "app.py generated",
+        "security_scan_input": "app.py generated",
+        "security_scan_ok": true,
+        "security_report": "No security issues detected",
+        "tests_passed": true,
+        "review_clean": true,
+        "human_signoff": true
+    }
+}
+
+---------------------------------------------------------------------------
+GRAPH RESULT: SUCCESS
+---------------------------------------------------------------------------
+
+SCENARIO A VALIDATION:
+Builder attempts: 2
+Retry count: 1
+PASS: Builder failed once, retried and succeeded.
+
+
+########## ASSIGNMENT 2 - SCENARIO B ##########
+
+===========================================================================
+SCENARIO B - BUILDER FAILS TWICE AND ESCALATES
+===========================================================================
+
+STEP 1
+---------------------------------------------------------------------------
+{
+    "node": "requirement",
+    "owner": "requirement_agent",
+    "status": "SUCCESS",
+    "input": "Campus event app goal",
+    "output": [
+        "user login",
+        "event listing",
+        "RSVP button"
+    ],
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ]
+    }
+}
+
+STEP 2
+---------------------------------------------------------------------------
+{
+    "node": "planner",
+    "owner": "planner_agent",
+    "status": "SUCCESS",
+    "input": "Application requirements",
+    "output": {
+        "user login": "task_for(user login)",
+        "event listing": "task_for(event listing)",
+        "RSVP button": "task_for(RSVP button)"
+    },
+    "state_after": {
+        "build_attempts": 0,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        }
+    }
+}
+
+STEP 3
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 1,
+    "status": "FAILED",
+    "input": "Planned development tasks",
+    "output": "Build failed",
+    "state_after": {
+        "build_attempts": 1,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": false
+    }
+}
+
+STEP 4
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "event": "RETRY",
+    "retry_number": 1,
+    "message": "Builder failed. Retrying once."
+}
+
+STEP 5
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "owner": "builder_agent",
+    "attempt": 2,
+    "status": "FAILED",
+    "input": "Planned development tasks",
+    "output": "Build failed",
+    "state_after": {
+        "build_attempts": 2,
+        "requirements": [
+            "user login",
+            "event listing",
+            "RSVP button"
+        ],
+        "tasks": {
+            "user login": "task_for(user login)",
+            "event listing": "task_for(event listing)",
+            "RSVP button": "task_for(RSVP button)"
+        },
+        "build_ok": false
+    }
+}
+
+STEP 6
+---------------------------------------------------------------------------
+{
+    "node": "builder",
+    "event": "HUMAN_ESCALATION",
+    "status": "ESCALATED",
+    "message": "Builder failed twice. Human intervention required. No third attempt allowed."
+}
+
+---------------------------------------------------------------------------
+GRAPH RESULT: FAILURE / ESCALATION
+---------------------------------------------------------------------------
+
+SCENARIO B VALIDATION:
+Builder attempts: 2
+Human escalations: 1
+PASS: Builder failed twice and escalated to human. No third attempt executed.

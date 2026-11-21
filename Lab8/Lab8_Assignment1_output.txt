@@ -1,0 +1,92 @@
+PS C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab8_Assignment1.py
+
+Starting parallel swarm execution...
+
+========== PARALLEL ROLE OUTPUTS ==========
+
+RESEARCH AGENT:
+{'format': '24-hour hackathon', 'tracks': ['AI', 'Machine Learning', 'Web Development'], 'research_notes': 'Past events favored a 24-hour format with themedtracks.'}
+
+LOGISTICS AGENT:
+{'venue': 'Grand Hall', 'venue_cost': 45000, 'date': 'Saturday'}
+
+BUDGET AGENT:
+{'total_cap': 30000, 'currency': 'INR'}
+
+JUDGING AGENT:
+{'criteria': ['Innovation', 'Technical depth', 'Demo quality']}
+
+MARKETING AGENT:
+{'publicity_plan': 'Social media campaigns, posters, email promotions and campus announcements', 'marketing_cost': 35000, 'channels': ['Instagram', 'Email','College Posters']}
+
+========== MERGED DRAFT PLAN ==========
+{'format': '24-hour hackathon', 'tracks': ['AI', 'Machine Learning', 'Web Development'], 'format_notes': 'Past events favored a 24-hour format with themed tracks.', 'venue': 'Grand Hall', 'venue_cost': 45000, 'date': 'Saturday', 'budget_cap': 30000, 'judging_criteria': ['Innovation', 'Technical depth', 'Demo quality'], 'publicity_plan': 'Social media campaigns, posters, email promotions and campus announcements', 'marketing_cost': 35000, 'marketing_channels': ['Instagram', 'Email', 'College Posters']}
+
+========== DISTRIBUTED CRITIQUE TRANSCRIPT ==========
+
+Role raising objection: LOGISTICS
+Conflict: Venue cost exceeds the overall budget cap
+
+Role raising objection: BUDGET
+Conflict: Venue cost exceeds the approved budget
+
+Role raising objection: BUDGET
+Conflict: Marketing cost exceeds the approved budget
+
+Role raising objection: MARKETING
+Conflict: Marketing publicity cost exceeds the budget cap
+
+========== CONFLICT RESOLUTION ==========
+
+Role: logistics
+Conflict: Venue cost exceeds the overall budget cap
+Rule: budget_over_preference
+Resolution: Reject venue costing 45000; request logistics to propose an alternative under 30000.
+
+Role: budget
+Conflict: Venue cost exceeds the approved budget
+Rule: budget_over_preference
+Resolution: Reject venue costing 45000; request logistics to propose an alternative under 30000.
+
+Role: budget
+Conflict: Marketing cost exceeds the approved budget
+Rule: budget_over_preference
+Resolution: Reject publicity proposal costing 35000; request marketing to prepare an alternative under 30000.
+
+Role: marketing
+Conflict: Marketing publicity cost exceeds the budget cap
+Rule: budget_over_preference
+Resolution: Reject publicity proposal costing 35000; request marketing to prepare an alternative under 30000.
+
+========== FINAL CONFLICT LOG ==========
+
+Conflict 1:
+Raised by: logistics
+Conflict: Venue cost exceeds the overall budget cap
+Rule applied: budget_over_preference
+Resolution: Reject venue costing 45000; request logistics to propose an alternative under 30000.
+
+Conflict 2:
+Raised by: budget
+Conflict: Venue cost exceeds the approved budget
+Rule applied: budget_over_preference
+Resolution: Reject venue costing 45000; request logistics to propose an alternative under 30000.
+
+Conflict 3:
+Raised by: budget
+Conflict: Marketing cost exceeds the approved budget
+Rule applied: budget_over_preference
+Resolution: Reject publicity proposal costing 35000; request marketing to prepare an alternative under 30000.
+
+Conflict 4:
+Raised by: marketing
+Conflict: Marketing publicity cost exceeds the budget cap
+Rule applied: budget_over_preference
+Resolution: Reject publicity proposal costing 35000; request marketing to prepare an alternative under 30000.
+
+========== VALIDATION RESULTS ==========
+Original Parallel Swarm: PASS
+Assignment 1 - Marketing Agent: PASS
+Assignment 2 - Distributed Critique: PASS
+
+ALL LAB 8 ASSIGNMENTS PASSED

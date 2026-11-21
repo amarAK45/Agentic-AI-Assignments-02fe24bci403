@@ -1,0 +1,323 @@
+PS C:\Users\Lenovo\Downloads\Actual_Python_Assignment_Codes> python Lab1_Assignment1.py
+============================================================
+LAB 1: AGENT VS CHATBOT - STUDY PLANNER
+============================================================
+
+Stopping condition:
+goal['schedule_generated'] is True
+
+=======================================================
+SCHEDULING CONFLICT DETECTED!
+The following days are already busy: Wednesday, Thursday
+These days are not included in your unavailable days.
+The plan will NOT be finalized until these conflicts are resolved.
+=======================================================
+
+Resolving conflicts...
+Resolved: Wednesday added to unavailable days.
+Resolved: Thursday added to unavailable days.
+All scheduling conflicts resolved.
+
+No scheduling conflicts detected.
+
+============================================================
+INITIAL STUDY PLAN
+============================================================
+{
+  "Monday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  },
+  "Tuesday": {
+    "subject": "Operating Systems",
+    "time": "17:00-19:00"
+  },
+  "Friday": {
+    "subject": "AI Agents",
+    "time": "17:00-19:00"
+  },
+  "Saturday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  }
+}
+
+============================================================
+ASSIGNMENT 1: TWO ROUNDS OF FEEDBACK
+============================================================
+
+--- Feedback Round 1 ---
+
+Applying feedback: Move Tuesday's session to the evening.
+Tuesday session moved to 20:00-22:00.
+
+Plan after feedback round 1:
+{
+  "Monday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  },
+  "Tuesday": {
+    "subject": "Operating Systems",
+    "time": "20:00-22:00"
+  },
+  "Friday": {
+    "subject": "AI Agents",
+    "time": "17:00-19:00"
+  },
+  "Saturday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  }
+}
+
+--- Feedback Round 2 ---
+
+Applying feedback: Make Friday's session shorter, only one hour.
+Friday session shortened to one hour.
+
+Plan after feedback round 2:
+{
+  "Monday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  },
+  "Tuesday": {
+    "subject": "Operating Systems",
+    "time": "20:00-22:00"
+  },
+  "Friday": {
+    "subject": "AI Agents",
+    "time": "17:00-18:00"
+  },
+  "Saturday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  }
+}
+
+--- Plan Object Verification ---
+SUCCESS: Both feedback rounds modified the same plan object.
+
+============================================================
+FINAL STUDY PLAN
+============================================================
+{
+  "Monday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  },
+  "Tuesday": {
+    "subject": "Operating Systems",
+    "time": "20:00-22:00"
+  },
+  "Friday": {
+    "subject": "AI Agents",
+    "time": "17:00-18:00"
+  },
+  "Saturday": {
+    "subject": "Data Structures",
+    "time": "17:00-19:00"
+  }
+}
+
+============================================================
+COMPLETE AGENT ITERATION LOG
+============================================================
+
+{
+  "iteration": 1,
+  "planned": "ask for subjects",
+  "action": "asked user for subjects",
+  "observed": [
+    "Data Structures",
+    "Operating Systems",
+    "AI Agents"
+  ],
+  "stopped": false
+}
+
+{
+  "iteration": 2,
+  "planned": "ask for hours_per_day",
+  "action": "asked user for hours_per_day",
+  "observed": 2,
+  "stopped": false
+}
+
+{
+  "iteration": 3,
+  "planned": "ask for unavailable_days",
+  "action": "asked user for unavailable_days",
+  "observed": [
+    "Sunday",
+    "Wednesday",
+    "Thursday"
+  ],
+  "stopped": false
+}
+
+{
+  "iteration": 4,
+  "planned": "read existing schedule before generating plan",
+  "action": "tool call: read_existing_schedule()",
+  "observed": {
+    "busy_days": [
+      "Wednesday",
+      "Thursday"
+    ]
+  },
+  "stopped": false
+}
+
+{
+  "iteration": 5,
+  "planned": "check existing schedule for conflicts",
+  "action": "detected scheduling conflicts",
+  "observed": {
+    "busy_days": [
+      "Wednesday",
+      "Thursday"
+    ],
+    "unavailable_days": [
+      "Sunday",
+      "Wednesday",
+      "Thursday"
+    ],
+    "conflicting_days": [
+      "Wednesday",
+      "Thursday"
+    ]
+  },
+  "stopped": false,
+  "status": "conflict_detected"
+}
+
+{
+  "iteration": 6,
+  "planned": "resolve detected scheduling conflicts",
+  "action": "updated unavailable days after user confirmation",
+  "observed": {
+    "resolved_days": [
+      "Wednesday",
+      "Thursday"
+    ],
+    "updated_unavailable_days": [
+      "Sunday",
+      "Wednesday",
+      "Thursday"
+    ]
+  },
+  "stopped": false,
+  "status": "conflicts_resolved"
+}
+
+{
+  "iteration": 7,
+  "planned": "generate schedule from gathered requirements",
+  "action": "built weekly plan",
+  "observed": {
+    "Monday": {
+      "subject": "Data Structures",
+      "time": "17:00-19:00"
+    },
+    "Tuesday": {
+      "subject": "Operating Systems",
+      "time": "20:00-22:00"
+    },
+    "Friday": {
+      "subject": "AI Agents",
+      "time": "17:00-18:00"
+    },
+    "Saturday": {
+      "subject": "Data Structures",
+      "time": "17:00-19:00"
+    }
+  },
+  "stopped": true,
+  "stop_reason": "goal.schedule_generated is now True"
+}
+
+{
+  "iteration": 8,
+  "planned": "apply user feedback to existing plan",
+  "action": "feedback received: 'Move Tuesday's session to the evening.'",
+  "observed": null,
+  "stopped": false
+}
+
+{
+  "iteration": 9,
+  "planned": "confirm revised plan",
+  "action": "mutated the existing plan object",
+  "observed": {
+    "Monday": {
+      "subject": "Data Structures",
+      "time": "17:00-19:00"
+    },
+    "Tuesday": {
+      "subject": "Operating Systems",
+      "time": "20:00-22:00"
+    },
+    "Friday": {
+      "subject": "AI Agents",
+      "time": "17:00-18:00"
+    },
+    "Saturday": {
+      "subject": "Data Structures",
+      "time": "17:00-19:00"
+    }
+  },
+  "stopped": true,
+  "stop_reason": "revision applied without regenerating the plan"
+}
+
+{
+  "iteration": 10,
+  "planned": "apply user feedback to existing plan",
+  "action": "feedback received: 'Make Friday's session shorter, only one hour.'",
+  "observed": null,
+  "stopped": false
+}
+
+{
+  "iteration": 11,
+  "planned": "confirm revised plan",
+  "action": "mutated the existing plan object",
+  "observed": {
+    "Monday": {
+      "subject": "Data Structures",
+      "time": "17:00-19:00"
+    },
+    "Tuesday": {
+      "subject": "Operating Systems",
+      "time": "20:00-22:00"
+    },
+    "Friday": {
+      "subject": "AI Agents",
+      "time": "17:00-18:00"
+    },
+    "Saturday": {
+      "subject": "Data Structures",
+      "time": "17:00-19:00"
+    }
+  },
+  "stopped": true,
+  "stop_reason": "revision applied without regenerating the plan"
+}
+
+============================================================
+LAB 1 EXECUTION SUMMARY
+============================================================
+Original agent loop: COMPLETED
+Missing information collection: COMPLETED
+Existing schedule tool: COMPLETED
+Busy-day conflict detection: COMPLETED
+Conflict resolution: COMPLETED
+Feedback round 1: COMPLETED
+Feedback round 2: COMPLETED
+Same plan object verification: COMPLETED
+
+Total iteration log entries: 11
+
+LAB 1 COMPLETED SUCCESSFULLY!

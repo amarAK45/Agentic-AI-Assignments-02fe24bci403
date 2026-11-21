@@ -1,0 +1,75 @@
+PS C:\Users\Lenovo\Downloads\Actual_Python_Assignment_Codes> python Lab5_Assignment2.py
+**********************************************************************
+LAB 5: MCP-STYLE CONNECTOR — MINI INTEGRATION SERVER
+**********************************************************************
+
+======================================================================
+ORIGINAL PRACTICAL: MCP-STYLE CONNECTOR
+======================================================================
+
+=== Capability discovery ===
+ read_file (resource) input={'path': 'str'} output={'content': 'str'}
+ query_db (tool) input={'sql': 'str'} output={'rows': 'list'}
+ call_api (tool) input={'endpoint': 'str'} output={'data': 'any'}
+ list_files (resource) input={} output={'files': 'list'}
+
+=== Call 1: read_file (resource) ===
+{'content': 'Agentic AI Systems - mini MCP server demo.'}
+
+=== Call 2: query_db (tool, permitted caller, SELECT only) ===
+{'rows': [('AI Club Talk', 12), ('Hackathon Kickoff', 9), ('Robotics Demo', 15)]}
+
+=== Call 3: call_api (tool) ===
+{'data': ['AI Club Talk', 'Robotics Demo']}
+
+=== Rejection path: disallowed statement ===
+{'error': 'only SELECT statements are permitted through this tool'}
+
+=== Rejection path: disallowed caller ===
+{'error': "caller 'unregistered_agent' is not permitted to use query_db"}
+
+======================================================================
+ASSIGNMENT 1: FOURTH DISCOVERABLE CAPABILITY
+======================================================================
+
+--- Discover all capabilities ---
+read_file (resource)
+query_db (tool)
+call_api (tool)
+list_files (resource)
+
+list_files discovered: True
+
+--- Call list_files dynamically ---
+{'files': ['/safe/README.md', '/safe/project.txt']}
+
+list_files call successful: True
+
+ASSIGNMENT 1: PASSED
+
+======================================================================
+ASSIGNMENT 2: SAFE DIRECTORY RESTRICTION
+======================================================================
+
+--- Test 1: Allowed safe file ---
+{'content': 'Agentic AI Systems - mini MCP server demo.'}
+Safe file access successful: True
+
+--- Test 2: Unauthorized file access ---
+{'error': {'code': 'PATH_OUTSIDE_SAFE_DIRECTORY', 'message': 'Access denied. Files can only be read from the /safe/ directory.', 'path': '/private/secret.txt'}}
+Outside directory access blocked: True
+
+--- Test 3: Path traversal attack ---
+{'error': {'code': 'PATH_OUTSIDE_SAFE_DIRECTORY', 'message': 'Access denied. Files can only be read from the /safe/ directory.', 'path': '/safe/../private/secret.txt'}}
+Path traversal attack blocked: True
+
+--- Security validation ---
+Allowed file read: True
+Unauthorized path rejected: True
+Path traversal rejected: True
+
+ASSIGNMENT 2: PASSED
+
+======================================================================
+LAB 5 EXECUTION COMPLETED
+======================================================================

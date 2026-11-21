@@ -1,0 +1,70 @@
+PS C:\Users\Lenovo\Downloads\Actual_Python_Assignment_Codes> python Lab4_Assignment2.py
+**********************************************************************
+LAB 4: MEMORY AND RETRIEVAL — PROJECT MEMORY
+**********************************************************************
+
+======================================================================
+ORIGINAL PRACTICAL: PROJECT MEMORY
+======================================================================
+
+--- Initial database decision ---
+WARNING: This decision is from 141 days ago and may be out of date. [memory, dated 2026-07-03] Per a decision on 2026-07-03, we chose PostgreSQL
+
+--- A team member proposes a change ---
+This conflicts with the stored decision from 2026-07-03 ('we chose PostgreSQL'). Should I update memory to 'we're switching to SQLite'?
+
+--- Team lead confirms the switch ---
+Write permitted: memory updated by team_lead.
+
+--- Attempted write by an unpermitted role ---
+Blocked as expected: role 'member' is not permitted to write memory
+
+--- Final answer reflects the confirmed update ---
+[memory, dated 2026-11-21] Per a decision on 2026-11-21, we're switching to SQLite
+
+======================================================================
+ASSIGNMENT 1: SECOND, ISOLATED TOPIC
+======================================================================
+
+--- Retrieve DATABASE topic ---
+Topic: database | Fact: we chose PostgreSQL
+Topic: database | Fact: we're switching to SQLite
+Database answer:
+[memory, dated 2026-11-21] Per a decision on 2026-11-21, we're switching to SQLite
+
+--- Retrieve HOSTING topic ---
+Topic: hosting | Fact: we chose AWS for application hosting
+Hosting answer:
+[memory, dated 2026-11-21] Per a decision on 2026-11-21, we chose AWS for application hosting
+
+--- Isolation validation ---
+Database retrieval is isolated: True
+Hosting retrieval is isolated: True
+
+ASSIGNMENT 1: PASSED
+
+======================================================================
+ASSIGNMENT 2: STALENESS / RETENTION POLICY
+======================================================================
+
+Configured retention period: 90 days
+
+--- Test 1: Fresh memory record ---
+[memory, dated 2026-11-21] Per a decision on 2026-11-21, the project uses Python for development
+Record age: 0 days
+Is stale: False
+
+--- Test 2: Artificially old memory record ---
+WARNING: This decision is from 689 days ago and may be out of date. [memory, dated 2025-01-01] Per a decision on 2025-01-01, the project used an older hosting configuration
+Record age: 689 days
+Is stale: True
+
+--- Staleness validation ---
+Fresh record correctly accepted: True
+Old record correctly flagged: True
+
+ASSIGNMENT 2: PASSED
+
+======================================================================
+LAB 4 EXECUTION COMPLETED
+======================================================================

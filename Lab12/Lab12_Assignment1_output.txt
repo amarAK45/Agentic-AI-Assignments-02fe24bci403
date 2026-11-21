@@ -1,0 +1,123 @@
+PS C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab12_Assignment1.py
+
+=================================================================
+ORIGINAL LAB 12 PRACTICAL
+=================================================================
+
+=== Control 2: Evaluation gate ===
+Evaluated and passed: True
+
+=== Attempt 1: missing rollback plan (should be rejected) ===
+{'rejected': True, 'reason': 'No rollback plan defined; rejecting proposal.'}
+
+=== Attempt 2: unscrubbed customer data (should be rejected) ===
+{'rejected': True, 'reason': 'Diagnostic input was not privacy-scrubbed; rejecting.'}
+
+=== Attempt 3: complete, valid proposal ===
+{'diagnosis': 'Config X causes memory leak under load.', 'proposed_action': 'revert config X to previous value', 'rollback_plan': 'Revert config X to v3 if v4 also leaks.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 500, 'budget_threshold': 1000, 'finance_approved': False}
+
+=== Human approves; a SEPARATE privileged process applies it ===
+{'applied': False, 'handed_off_to': 'privileged_deploy_process', 'note': 'This agent never holds production write access; a separate privileged process performs the actual apply step.'}
+
+=== Adversarial test: agent attempts direct production write ===
+Blocked as expected: Agent must not hold direct production write access.
+
+=== Full audit log ===
+{'step': 'evaluation', 'data': {'pass_rate': 0.9, 'passed_gate': True, 'previous_proposals_since_evaluation': 0, 'total_proposals': 0}}
+{'step': 'propose_change', 'data': {'rejected': True, 'reason': 'no rollback plan supplied'}}
+{'step': 'propose_change', 'data': {'rejected': True, 'reason': 'unscrubbed customer data in input'}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'Config X causes memory leak under load.', 'proposed_action': 'revert config X to previous value', 'rollback_plan': 'Revert config X to v3 if v4 also leaks.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 500, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'human_decision', 'data': {'decision': 'approved'}}
+
+
+=================================================================
+ASSIGNMENT 1: COST-CATEGORY CONTROL
+=================================================================
+
+Budget threshold: 1000
+
+=== Evaluation gate ===
+Evaluated and passed: True
+
+=== Test 1: Cost within budget ===
+{'diagnosis': 'Memory usage is high.', 'proposed_action': 'update memory configuration', 'rollback_plan': 'Restore previous memory configuration.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 500, 'budget_threshold': 1000, 'finance_approved': False}
+
+=== Test 2: Cost exceeds budget without finance approval ===
+{'rejected': True, 'reason': 'Estimated cost 1500 exceeds budget threshold 1000. Finance approval is required.'}
+
+=== Test 3: Cost exceeds budget with finance approval ===
+{'diagnosis': 'Database performance issue.', 'proposed_action': 'upgrade database infrastructure', 'rollback_plan': 'Restore previous database configuration.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 1500, 'budget_threshold': 1000, 'finance_approved': True}
+
+=== Test 4: Adversarial test - missing cost estimate ===
+{'rejected': True, 'reason': 'Cost estimate is required; rejecting proposal.'}
+
+=== ASSIGNMENT 1 VALIDATION ===
+Within-budget proposal: PASS
+Over-budget proposal rejected without finance approval: PASS
+Over-budget proposal accepted with finance approval: PASS
+Missing cost estimate rejected: PASS
+
+=== Full audit log ===
+{'step': 'evaluation', 'data': {'pass_rate': 0.9, 'passed_gate': True, 'previous_proposals_since_evaluation': 0, 'total_proposals': 0}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'Memory usage is high.', 'proposed_action': 'update memory configuration', 'rollback_plan': 'Restore previous memory configuration.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 500, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'propose_change', 'data': {'rejected': True, 'reason': 'budget threshold exceeded without finance approval'}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'Database performance issue.', 'proposed_action': 'upgrade database infrastructure', 'rollback_plan': 'Restore previous database configuration.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 1500, 'budget_threshold': 1000, 'finance_approved': True}}
+{'step': 'propose_change', 'data': {'rejected': True, 'reason': 'missing cost estimate'}}
+
+
+=================================================================
+ASSIGNMENT 2: MANDATORY RE-EVALUATION
+=================================================================
+
+=== Initial evaluation ===
+Evaluated and passed: True
+
+=== Submitting five valid proposals ===
+
+--- Proposal 1 ---
+{'diagnosis': 'System issue detected for proposal 1.', 'proposed_action': 'Apply safe configuration change 1.', 'rollback_plan': 'Restore configuration before change 1.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}
+
+--- Proposal 2 ---
+{'diagnosis': 'System issue detected for proposal 2.', 'proposed_action': 'Apply safe configuration change 2.', 'rollback_plan': 'Restore configuration before change 2.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}
+
+--- Proposal 3 ---
+{'diagnosis': 'System issue detected for proposal 3.', 'proposed_action': 'Apply safe configuration change 3.', 'rollback_plan': 'Restore configuration before change 3.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}
+
+--- Proposal 4 ---
+{'diagnosis': 'System issue detected for proposal 4.', 'proposed_action': 'Apply safe configuration change 4.', 'rollback_plan': 'Restore configuration before change 4.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}
+
+--- Proposal 5 ---
+{'diagnosis': 'System issue detected for proposal 5.', 'proposed_action': 'Apply safe configuration change 5.', 'rollback_plan': 'Restore configuration before change 5.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}
+
+Total proposals: 5
+Proposals since evaluation: 5
+Re-evaluation required: True
+
+=== Sixth proposal: should be blocked until re-evaluation ===
+{'rejected': True, 'reason': 'Blocked: 5 proposals have been made. Call evaluate() again before making another proposal.'}
+
+=== Re-evaluation after five proposals ===
+Re-evaluated and passed: True
+Proposals since evaluation: 0
+
+=== Sixth proposal after re-evaluation (should be accepted for approval) ===
+{'diagnosis': 'Another system issue detected.', 'proposed_action': 'Apply configuration change number 6.', 'rollback_plan': 'Restore the previous configuration.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}
+
+=== ASSIGNMENT 2 VALIDATION ===
+First five proposals accepted: PASS
+Sixth proposal blocked before re-evaluation: PASS
+Re-evaluation passed: PASS
+Sixth proposal allowed after re-evaluation: PASS
+Total successful proposals: 6
+
+=== Full audit log ===
+{'step': 'evaluation', 'data': {'pass_rate': 0.9, 'passed_gate': True, 'previous_proposals_since_evaluation': 0, 'total_proposals': 0}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'System issue detected for proposal 1.', 'proposed_action': 'Apply safe configuration change 1.', 'rollback_plan': 'Restore configuration before change 1.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'System issue detected for proposal 2.', 'proposed_action': 'Apply safe configuration change 2.', 'rollback_plan': 'Restore configuration before change 2.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'System issue detected for proposal 3.', 'proposed_action': 'Apply safe configuration change 3.', 'rollback_plan': 'Restore configuration before change 3.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'System issue detected for proposal 4.', 'proposed_action': 'Apply safe configuration change 4.', 'rollback_plan': 'Restore configuration before change 4.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'System issue detected for proposal 5.', 'proposed_action': 'Apply safe configuration change 5.', 'rollback_plan': 'Restore configuration before change 5.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}}
+{'step': 'reevaluation_required', 'data': {'proposal_count': 5, 'message': 'Five proposals completed. Re-evaluation required.'}}
+{'step': 'propose_change', 'data': {'rejected': True, 'reason': 'mandatory re-evaluation required'}}
+{'step': 'evaluation', 'data': {'pass_rate': 0.9, 'passed_gate': True, 'previous_proposals_since_evaluation': 5, 'total_proposals': 5}}
+{'step': 'approval_requested', 'data': {'diagnosis': 'Another system issue detected.', 'proposed_action': 'Apply configuration change number 6.', 'rollback_plan': 'Restore the previous configuration.', 'category': 'production', 'requires_approval': True, 'cost_estimate': 200, 'budget_threshold': 1000, 'finance_approved': False}}

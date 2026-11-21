@@ -1,0 +1,41 @@
+C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab9_Assignment1.py
+=== Question ===
+What are the demonstrated benefits and limitations of retrieval-augmented generation (RAG) for domain-specific question answering, as of the last year?
+Success criteria: At least 3 independent sources; at least 1 limitation identified; 1 executive summary.
+
+=== Evidence table ===
+{'id': 'S1', 'type': 'peer-reviewed paper', 'quality_tier': 'peer-reviewed', 'date': '2026-02', 'claim': 'RAG reduces hallucination rate by 41% on domain QAvs a non-retrieval baseline.', 'evidence': '200 held-out questions from a medical knowledge base.', 'limitation': 'Small, single-domain evaluation set; may not generalize.'}
+{'id': 'S2', 'type': 'vendor engineering blog', 'quality_tier': 'vendor blog', 'date': '2026-04', 'claim': 'RAG improves answer accuracy by 35% in an internal support-ticket QA system.', 'evidence': 'Internal A/B test over 10,000 tickets.', 'limitation': 'Funded/internal evaluation; no independent replication reported.'}
+{'id': 'S3', 'type': 'independent benchmark report', 'quality_tier': 'independent benchmark', 'date': '2026-05', 'claim': 'RAG introduces a measurable latency overhead of 200-400ms per query.', 'evidence': 'Benchmarked across 5 open-source RAG pipelines.', 'limitation': 'Latency depends heavily on retrieval index size; not tested at scale.'}
+{'id': 'S4', 'type': 'independent benchmark report', 'quality_tier': 'independent benchmark', 'date': '2026-06', 'claim': 'RAG showed no measurable reduction in hallucination rate compared with a non-retrieval baseline in a legal-domain QA evaluation.', 'evidence': 'Evaluation using 500 held-out legal question-answering samples.', 'limitation': 'Different domain and retrieval configuration from S1; cross-domain replication was not reported.'}
+
+=== Comparison ===
+{'agreements': [{'source_ids': ['S1', 'S2'], 'finding': 'S1 and S2 agree that RAG improves factual or answer accuracy over a non-retrieval baseline, in different domains.'}], 'conflicts': [{'source_ids': ['S1', 'S4'], 'type': 'direct contradiction', 'claim_1': 'RAG reduces hallucination rate by 41% on domain QA vs a non-retrieval baseline.', 'claim_4': 'RAG showed no measurable reduction in hallucination rate compared with a non-retrieval baseline in a legal-domain QA evaluation.', 'explanation': 'S1 reports a 41% reduction in hallucination, whereas S4 reports no measurable reduction.', 'possible_reason': 'The disagreement may result from different evaluation methodologies, different domains (medical versus legal QA), different datasets, or different retrieval configurations.'}], 'gaps': [{'source_ids': ['S3'], 'finding': 'S3 reports a latency overhead of 200-400ms per query. S1 and S2 do not report latency, so this is a coverage gap rather than a direct contradiction.'}, {'source_ids': [], 'finding': 'No source in this set reports on RAG performance for non-English languages.'}]}
+
+=== Executive summary (every line traceable to a source) ===
+[S1] RAG reduces hallucination rate by 41% on domain QA vs a non-retrieval baseline.
+[S2] RAG improves answer accuracy by 35% in an internal support-ticket QA system.
+[S3] RAG introduces a measurable latency overhead of 200-400ms per query.
+[S4] RAG showed no measurable reduction in hallucination rate compared with a non-retrieval baseline in a legal-domain QA evaluation.
+[S1,S2] S1 and S2 agree that RAG improves factual or answer accuracy over a non-retrieval baseline, in different domains.
+[S1,S4] Genuine conflict: S1 reports a 41% reduction in hallucination, whereas S4 reports no measurable reduction.
+[S1,S4] Possible reason: The disagreement may result from different evaluation methodologies, different domains (medical versus legal QA), different datasets, or different retrieval configurations.
+[S3] Gap: S3 reports a latency overhead of 200-400ms per query. S1 and S2 do not report latency, so this is a coverage gap rather than a direct contradiction.
+[gap] No source in this set reports on RAG performance for non-English languages.
+[S1] QUALITY-WEIGHTED CONCLUSION: The synthesis leans toward this claim because it has the higher source-quality tier.
+[S4] DISCLOSURE: This lower-tier source's claim is down-weighted, not discarded. Its contradictory finding remains included in the evidence.
+
+=== Source quality ranking ===
+S1: peer-reviewed (rank 3)
+S2: vendor blog (rank 1)
+S3: independent benchmark (rank 2)
+S4: independent benchmark (rank 2)
+
+=== Quality-weighted conflict decision ===
+Lean toward S1 because its quality tier (peer-reviewed) ranks higher than S4 (independent benchmark).
+Down-weighted but not discarded: S4
+
+=== Recommended next questions ===
+- How does RAG latency scale with retrieval index size beyond the tested range?
+- Do RAG accuracy gains hold for non-English domain QA?
+- Why do medical and legal QA evaluations report different hallucination-reduction results?

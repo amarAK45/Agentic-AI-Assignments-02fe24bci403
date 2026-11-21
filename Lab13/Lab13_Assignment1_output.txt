@@ -1,0 +1,41 @@
+C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab13_Assignment2.py
+
+=================================================================
+ORIGINAL PRACTICAL: MECHANICAL PREDICTIVE MAINTENANCE
+=================================================================
+domain: Mechanical Engineering -- Predictive Maintenance
+latest_reading: {'t': 5, 'vibration_mm_s': 6.2, 'temp_c': 84}
+condition: ALARM
+trend: worsening
+recommended_action: recommend_shutdown_for_human_review
+auto_executed: False
+evaluation_method: Threshold classification against ISO-10816-style vibration bands, cross-checked with temperature trend over the log window.
+
+=================================================================
+ASSIGNMENT 1: ELECTRICAL LOAD FORECASTING
+=================================================================
+domain: Electrical Engineering -- Load Forecasting
+latest_reading: {'t': 4, 'load_percent': 98}
+condition: ALARM
+recommended_action: recommend_load_isolation_for_human_review
+auto_executed: False
+evaluation_method: Threshold-based classification using electrical load percentage of rated capacity.
+
+=================================================================
+ASSIGNMENT 2: TREND-BASED ESCALATION
+=================================================================
+domain: Mechanical Engineering -- Trend-based Maintenance
+latest_reading: {'t': 2, 'vibration_mm_s': 3.5, 'temp_c': 69}
+condition: WARNING
+trend: worsening
+consecutive_warning_readings: 3
+recommended_action: schedule_inspection
+auto_executed: False
+escalation_reason: Three consecutive WARNING readings with an upward vibration trend. Inspection is required.
+
+=================================================================
+LAB 13 VALIDATION
+=================================================================
+Original Practical: PASS
+Assignment 1 - Electrical Load Forecasting: PASS
+Assignment 2 - Trend-based Escalation: PASS

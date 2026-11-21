@@ -1,0 +1,160 @@
+C:\Users\Rashmi\Downloads\Actual_Python_Assignment_Codes> python Lab11_Assignment2.py
+
+#################################################################
+LAB 11: AGENTIC SDLC FACTORY
+#################################################################
+
+
+
+=================================================================
+ASSIGNMENT 1: SECOND CONCURRENT STORY
+=================================================================
+
+Processing CSV and PDF stories with correct code.
+
+[HUMAN CHECKPOINT] Reviewing stories for real user intent...
+ Confirmed: As a user, I can export the current report view as a CSV file, preserving the applied filters.
+ Confirmed: As a user, I can export the current report view as a PDF file, preserving the applied filters.
+
+[SDLC] Processing independent story branches...
+
+[HUMAN CHECKPOINT] Final accept/reject based on review + tests...
+ Decision: accept
+
+[HUMAN CHECKPOINT] Final accept/reject based on review + tests...
+ Decision: accept
+
+=================================================================
+STORY: US-1 - CSV EXPORT
+=================================================================
+
+Design:
+{'story_id': 'US-1', 'format': 'CSV', 'components': ['export_endpoint', 'csv_serializer', 'export_button (UI)']}
+
+=== Test results ===
+Acceptance criteria tested: ['clicking Export produces a .csv file', 'the CSV contains only rows matching the currently applied filters', 'the CSV header row matches the visible column names']
+ [PASS] produces output
+ [PASS] header matches columns
+ [PASS] only filtered rows present
+
+Review:
+{'story_id': 'US-1', 'issues': [], 'clean': True}
+
+Decision:
+accept
+
+Docs:
+Usage: click 'Export' on the reports page to download the filtered view as CSV. (US-1)
+
+Release:
+{'story_id': 'US-1', 'released': True, 'release_note': 'Added CSV export (US-1).', 'rollback_plan': 'Revert to previous reports-page build if export errors spike post-release.'}
+
+=================================================================
+STORY: US-2 - PDF EXPORT
+=================================================================
+
+Design:
+{'story_id': 'US-2', 'format': 'PDF', 'components': ['pdf_export_endpoint', 'pdf_generator', 'export_pdf_button (UI)']}
+
+=== Test results ===
+Acceptance criteria tested: ['clicking Export PDF produces a .pdf file', 'the PDF contains only rows matching the currently applied filters', 'the PDF header row matches the visible column names']
+ [PASS] produces valid PDF output
+ [PASS] PDF header matches columns
+ [PASS] only filtered rows present
+
+Review:
+{'story_id': 'US-2', 'issues': [], 'clean': True}
+
+Decision:
+accept
+
+Docs:
+Usage: click 'Export PDF' on the reports page to download the filtered view as PDF. (US-2)
+
+Release:
+{'story_id': 'US-2', 'released': True, 'release_note': 'Added PDF export (US-2).', 'rollback_plan': 'Revert to previous reports-page build if export errors spike post-release.'}
+
+=== LINEAGE ===
+stories[US-1] <- requirement_agent(feature_request)
+design[US-1] <- design_agent(story[US-1])
+code[US-1] <- coding_agent(design[US-1], story[US-1])
+tests[US-1] <- testing_agent(story[US-1]) [independent of code]
+review[US-1] <- review_agent(design[US-1], code[US-1], tests[US-1])
+release[US-1] <- release_agent(decision, story[US-1])
+stories[US-2] <- requirement_agent(feature_request)
+design[US-2] <- design_agent(story[US-2])
+code[US-2] <- coding_agent(design[US-2], story[US-2])
+tests[US-2] <- testing_agent(story[US-2]) [independent of code]
+review[US-2] <- review_agent(design[US-2], code[US-2], tests[US-2])
+release[US-2] <- release_agent(decision, story[US-2])
+
+=== ASSIGNMENT 1 VALIDATION ===
+CSV story pipeline: PASS
+PDF story pipeline: PASS
+Both stories released: PASS
+
+
+
+=================================================================
+ASSIGNMENT 2: DELIBERATE BUG DETECTION
+=================================================================
+
+Introducing an inverted filter bug inside coding_agent.
+testing_agent remains unchanged and independent.
+
+[HUMAN CHECKPOINT] Reviewing stories for real user intent...
+ Confirmed: As a user, I can export the current report view as a CSV file, preserving the applied filters.
+
+[SDLC] Processing independent story branches...
+
+[HUMAN CHECKPOINT] Final accept/reject based on review + tests...
+ Decision: reject
+
+=================================================================
+STORY: US-1 - CSV EXPORT
+=================================================================
+
+Design:
+{'story_id': 'US-1', 'format': 'CSV', 'components': ['export_endpoint', 'csv_serializer', 'export_button (UI)']}
+
+=== Test results ===
+Acceptance criteria tested: ['clicking Export produces a .csv file', 'the CSV contains only rows matching the currently applied filters', 'the CSV header row matches the visible column names']
+ [PASS] produces output
+ [PASS] header matches columns
+ [FAIL] only filtered rows present
+
+Review:
+{'story_id': 'US-1', 'issues': ['one or more independent tests failed'], 'clean': False}
+
+Decision:
+reject
+
+Docs:
+Usage: click 'Export' on the reports page to download the filtered view as CSV. (US-1)
+
+Release:
+{'story_id': 'US-1', 'released': False, 'reason': 'review did not pass'}
+
+=== LINEAGE ===
+stories[US-1] <- requirement_agent(feature_request)
+design[US-1] <- design_agent(story[US-1])
+code[US-1] <- coding_agent(design[US-1], story[US-1])
+tests[US-1] <- testing_agent(story[US-1]) [independent of code]
+review[US-1] <- review_agent(design[US-1], code[US-1], tests[US-1])
+release[US-1] <- release_agent(decision, story[US-1])
+
+=== ASSIGNMENT 2 VALIDATION ===
+Deliberate bug introduced: PASS
+Independent tests detected failure: PASS
+Failed tests: ['only filtered rows present']
+Review rejected buggy implementation: PASS
+Buggy implementation blocked from release: PASS
+
+
+
+=================================================================
+FINAL LAB 11 VALIDATION
+=================================================================
+Original Practical: PASS
+Assignment 1 - Second Story: PASS
+Assignment 2 - Independent Bug Detection: PASS
